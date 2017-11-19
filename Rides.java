@@ -27,6 +27,12 @@ public class Rides{
        System.out.println("ERROR: Not enough drivers!");
        return null; //not enough drivers for number of people
      }
+
+     ArrayList<Person> drivers = getListOfDrivers(people);
+     ArrayList<Person> passengers = getListOfPassengers(people);
+     System.out.println(drivers);
+     System.out.println(passengers);
+
      ArrayList<Car> cars = new ArrayList();
      cars.add(new Car(people.get(0)));
      return cars;
@@ -42,6 +48,28 @@ public class Rides{
        }
      }
      return numSeats - numPeople;
+   }
+
+   //gets a list of the drivers
+   private ArrayList<Person> getListOfDrivers(ArrayList<Person> people){
+     ArrayList<Person> drivers = new ArrayList();
+     for (int i = 0; i < people.size(); i++) {
+       if (people.get(i).getNumSeats() > 0) {
+         drivers.add(people.get(i));
+       }
+     }
+     return drivers;
+   }
+
+   //gets a list of the passengers
+   private ArrayList<Person> getListOfPassengers(ArrayList<Person> people){
+     ArrayList<Person> passengers = new ArrayList();
+     for (int i = 0; i < people.size(); i++) {
+       if (people.get(i).getNumSeats() == 0) {
+         passengers.add(people.get(i));
+       }
+     }
+     return passengers;
    }
 
    public String toString(){
