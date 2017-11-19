@@ -32,11 +32,15 @@ public class Person{
    public String getName() { return name; }
    public String getPhone() { return phone; }
    public String getLocation() { return location; }
-   public int numSeats() { return seats; }
+   public int getNumSeats() { return seats; }
 
+   public String toString() {
+     String str = "Name: " + getName() + ", Location: " + getLocation();
+     return str;
+   }
 
    public static void main(String[] args) {
        Person kait = new Person("Kaitlin", "Marshall", 7);
-       System.out.println(kait.getName());
+       System.out.println(kait.toString());
    }
 }
