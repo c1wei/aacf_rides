@@ -38,10 +38,7 @@ JC = javac
 # CLASSES is a macro consisting of 4 words (one for each java source file)
 #
 
-CLASSES = \
-        Person.java \
-        Car.java \
-        Rides.java
+CLASSES = *.java
 
 #
 # the default make target entry
