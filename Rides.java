@@ -5,6 +5,10 @@
 //There should only be one Rides object.
 //Can add a person. Get list of all people. Get list of all Cars. Add a car (?)
 
+//should have loop around the circularlist of drivers and syphon in passengers into
+//those cars in chunks (based on location)
+//Priority goes to the people who live where the driver lives as well. Then by school.
+
 import java.util.*;
 
 public class Rides{
@@ -28,8 +32,9 @@ public class Rides{
        return null; //not enough drivers for number of people
      }
 
-     ArrayList<Person> drivers = getListOfDrivers(people);
-     ArrayList<Person> passengers = getListOfPassengers(people);
+     CircularList<Person> drivers = getListOfDrivers(people);
+     CircularList<Person> passengers = getListOfPassengers(people);
+     ArrayList<Person> pass2 = passengers;
      System.out.println(drivers);
      System.out.println(passengers);
 
@@ -46,13 +51,14 @@ public class Rides{
        if (people.get(i).getNumSeats() > 0) {
          numSeats += people.get(i).getNumSeats() + 1; //plus one because of driver
        }
+
      }
      return numSeats - numPeople;
    }
 
    //gets a list of the drivers
-   private ArrayList<Person> getListOfDrivers(ArrayList<Person> people){
-     ArrayList<Person> drivers = new ArrayList();
+   private CircularList<Person> getListOfDrivers(ArrayList<Person> people){
+     CircularList<Person> drivers = new CircularList();
      for (int i = 0; i < people.size(); i++) {
        if (people.get(i).getNumSeats() > 0) {
          drivers.add(people.get(i));
@@ -62,8 +68,8 @@ public class Rides{
    }
 
    //gets a list of the passengers
-   private ArrayList<Person> getListOfPassengers(ArrayList<Person> people){
-     ArrayList<Person> passengers = new ArrayList();
+   private CircularList<Person> getListOfPassengers(ArrayList<Person> people){
+     CircularList<Person> passengers = new CircularList();
      for (int i = 0; i < people.size(); i++) {
        if (people.get(i).getNumSeats() == 0) {
          passengers.add(people.get(i));
